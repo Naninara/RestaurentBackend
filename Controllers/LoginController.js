@@ -5,11 +5,15 @@ const LoginController = async (req, res) => {
   const foundUser = await user.findOne({ gmail: email });
 
   if (!foundUser) {
-    res.status(401).json({ msg: "Invalid Credintials" });
+    res.status(401).json({ msg: "User Not Registered" });
   } else {
     const isPasswordMatch = await bcrypt.compare(pass, foundUser.passWord);
     if (isPasswordMatch) {
-      res.status(200).json({ msg: "Logged in sucessfully" });
+      res.status(200).json({
+        msg: "Logged in sucessfully",
+        name: foundUser.UserName,
+        gmail: foundUser.gmail,
+      });
     } else {
       res.sendStatus(401);
     }
