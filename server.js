@@ -6,24 +6,13 @@ const cors = require("cors");
 const MenuRouter = require("./Routes/MenuRoutes");
 const CuisinesRoute = require("./Routes/CuisineRoute");
 const dbconnection = require("./Helpers/ConnectDb");
-
+const ForgotPass = require("./Routes/ChangePassword");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
 app.use("/menu", MenuRouter);
-app.post("/add", async (req, res) => {
-  const data = req.body;
-  await rest
-    .insertMany(req.body)
-    .then((response) => {
-      console.log(response);
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+app.use("/forgot", ForgotPass);
 app.use("/auth", LoginRouter);
 app.use("/cuisine", CuisinesRoute);
 dbconnection();
