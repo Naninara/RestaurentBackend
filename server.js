@@ -1,7 +1,7 @@
 const express = require("express");
 const LoginRouter = require("./Routes/LoginRoutes");
 const app = express();
-const rest = require("./Model/MenuModel");
+const OrderRouter = require("./Routes/PlaceOrderApi");
 const cors = require("cors");
 const MenuRouter = require("./Routes/MenuRoutes");
 const CuisinesRoute = require("./Routes/CuisineRoute");
@@ -15,6 +15,7 @@ app.use("/menu", MenuRouter);
 app.use("/forgot", ForgotPass);
 app.use("/auth", LoginRouter);
 app.use("/cuisine", CuisinesRoute);
+app.use("/orders", OrderRouter);
 dbconnection();
 app.listen(3500, () => {
   console.log(`Server running on port 3500 and Db connected`);
