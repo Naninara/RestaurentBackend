@@ -7,6 +7,7 @@ const MenuRouter = require("./Routes/MenuRoutes");
 const CuisinesRoute = require("./Routes/CuisineRoute");
 const dbconnection = require("./Helpers/ConnectDb");
 const ForgotPass = require("./Routes/ChangePassword");
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());

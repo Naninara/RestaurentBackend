@@ -1,3 +1,4 @@
+const { response } = require("express");
 const OrderModel = require("../Model/OrderModel");
 const OrderController = async (req, res) => {
   const { email, orderItems, OrderCost, Address } = req.body;
@@ -22,4 +23,12 @@ const getOrdersByEmail = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { OrderController, getOrdersByEmail };
+const getSingleOrder = async (req, res) => {
+  const id = req.params.id;
+
+  await OrderModel.findById(id)
+    .then((response) => res.send(response))
+    .catch((err) => console.log(err));
+};
+
+module.exports = { OrderController, getOrdersByEmail, getSingleOrder };
