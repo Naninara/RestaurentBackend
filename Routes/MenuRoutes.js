@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+
+const verifyJwt = require("../Middleware/jwtParsor");
 const {
   GetAllMenuItems,
   GetsingleMenuItems,

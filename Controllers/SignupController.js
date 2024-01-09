@@ -21,7 +21,7 @@ const SignupController = async (req, res) => {
       })
       .catch((err) => console.log(err));
   } catch (err) {
-    return res.status(501).send(err);
+    return res.status(400).send(err);
   }
 };
 
